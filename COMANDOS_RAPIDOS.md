@@ -103,7 +103,7 @@ git push -u origin main
 
 ```bash
 # Genera clave SSH
-ssh-keygen -t ed25519 -C "cadavezqueloscerros@gmail.com"
+ssh-keygen -t ed25519 -C "tu-correo@ejemplo.com"
 
 # Sigue las instrucciones y presiona Enter
 
