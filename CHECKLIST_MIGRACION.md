@@ -31,7 +31,7 @@ Usa este checklist para no olvidar nada en el proceso de migración.
 - [ ] **Configurar Git**
   ```bash
   git config --global user.name "Tu Nombre"
-  git config --global user.email "cadavezqueloscerros@gmail.com"
+  git config --global user.email "tu-correo@ejemplo.com"
   ```
 
 ### Clonar Repo Existente
