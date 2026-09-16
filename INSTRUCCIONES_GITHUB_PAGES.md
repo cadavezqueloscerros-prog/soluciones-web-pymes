@@ -19,7 +19,7 @@
 
 # 2. Configura Git con tu email de GitHub
 git config --global user.name "Tu Nombre"
-git config --global user.email "cadavezqueloscerros@gmail.com"
+git config --global user.email "tu-correo@ejemplo.com"
 ```
 
 ### Opción B: Usa GitHub Desktop
