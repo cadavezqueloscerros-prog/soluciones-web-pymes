@@ -1,0 +1,9 @@
+node_modules/
+dist/
+apps/pocketbase/pb_data/
+apps/pocketbase/pocketbase
+*.db
+*.db-shm
+*.db-wal
+.env
+.env.*
