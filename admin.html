@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de administración | Soluciones Web Pymes y Más</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .admin-toolbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.4rem;}
+  .admin-toolbar select{border:1.5px solid var(--border);border-radius:10px;padding:.6rem .9rem;font-family:inherit;font-size:.9rem;color:var(--ink);min-width:240px;}
+  .exp-form{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:1rem;align-items:end;margin-bottom:1.6rem;}
+  .exp-form .field{margin-bottom:0;}
+  .exp-form .full{grid-column:1 / -1;}
+  .exp-list{display:flex;flex-direction:column;gap:1rem;}
+  .exp-card{border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.4rem;}
+  .exp-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+  .exp-card-top h4{font-size:1.02rem;margin-bottom:.2rem;}
+  .exp-card-top .precio{font-family:'Poppins',sans-serif;font-weight:800;color:var(--navy);font-size:1.15rem;white-space:nowrap;}
+  .exp-card p.notas{color:var(--muted);font-size:.88rem;margin-top:.5rem;}
+  .exp-card .exp-actions{display:flex;gap:.5rem;align-items:center;margin-top:.8rem;flex-wrap:wrap;}
+  .exp-card .exp-actions select{border:1.5px solid var(--border);border-radius:8px;padding:.4rem .6rem;font-size:.82rem;font-family:inherit;}
+  .empty-hint{color:var(--muted);font-size:.9rem;padding:1.4rem;text-align:center;}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="ic-wa" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.6 6.3A8.4 8.4 0 0 0 3.6 16.3L2 22l5.8-1.5A8.4 8.4 0 1 0 17.6 6.3ZM12 19.4a7 7 0 0 1-3.6-1l-.3-.2-2.7.7.7-2.6-.2-.3a7 7 0 1 1 6.1 3.4Zm3.9-5.2c-.2-.1-1.2-.6-1.4-.7-.2-.1-.3-.1-.5.1s-.6.7-.7.8-.3.2-.5.1a5.7 5.7 0 0 1-2.8-2.5c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4s-.5-1.2-.7-1.6-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a1.9 1.9 0 0 0-.6 1.4c0 .8.6 1.6.7 1.8.1.1 1.2 1.9 3 2.6 1.7.7 1.7.5 2 .4a1.7 1.7 0 0 0 1.1-.8c.1-.3.1-.5.1-.6s-.2-.1-.4-.2Z"/></symbol>
+  <symbol id="ic-mail" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><polyline points="22 6 12 13 2 6"/></symbol>
+  <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+</svg>
+
+<header id="header">
+  <nav>
+    <a href="index.html" class="logo">
+      <div class="logo-badge">SW</div>
+      <div class="logo-text"><strong>Soluciones Web</strong><span>Pymes y Más · MX</span></div>
+    </a>
+    <div class="nav-user" id="navUser">
+      <span class="hide-mobile">Admin: <strong id="navUserName">…</strong></span>
+      <button class="btn nav-ghost btn-sm" onclick="SWApp.signOut()">Cerrar sesión</button>
+    </div>
+    <button class="burger" id="burger">☰</button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <span id="mobileUserName" style="display:block;padding:1rem 24px;color:var(--muted);border-bottom:1px solid var(--border);">…</span>
+    <button onclick="SWApp.signOut()">Cerrar sesión</button>
+  </div>
+</header>
+
+<div id="gate" class="gate">
+  <div class="spinner"></div>
+  <p style="margin-top:1rem;color:var(--muted);">Verificando tu sesión…</p>
+</div>
+
+<div id="appContent" class="hidden">
+  <section class="app-hero">
+    <div class="container">
+      <span class="kicker">Panel de administración</span>
+      <h1>Usuarios, citas y expedientes</h1>
+      <p>Aquí ves todo lo que pasa en la página: quién se registró, qué citas se han agendado y el expediente de cada cliente.</p>
+    </div>
+  </section>
+
+  <section class="app-main">
+    <div class="container">
+
+      <div class="tabs-row">
+        <button class="tab-link active" data-tab="resumen" onclick="showTab('resumen')">Resumen</button>
+        <button class="tab-link" data-tab="usuarios" onclick="showTab('usuarios')">Usuarios registrados</button>
+        <button class="tab-link" data-tab="citas" onclick="showTab('citas')">Citas</button>
+        <button class="tab-link" data-tab="expedientes" onclick="showTab('expedientes')">Expedientes</button>
+      </div>
+
+      <!-- RESUMEN -->
+      <div class="tab-panel active" id="panel-resumen">
+        <div class="stat-grid">
+          <div class="stat-card"><div class="num" id="statUsuarios">–</div><div class="label">Usuarios registrados</div></div>
+          <div class="stat-card"><div class="num" id="statPendientes">–</div><div class="label">Citas pendientes</div></div>
+          <div class="stat-card"><div class="num" id="statConfirmadas">–</div><div class="label">Citas confirmadas</div></div>
+          <div class="stat-card"><div class="num" id="statExpedientes">–</div><div class="label">Expedientes abiertos</div></div>
+        </div>
+        <div class="card" style="padding:0;overflow-x:auto;">
+          <table class="data-table" id="movimientosTable">
+            <thead><tr><th>Fecha</th><th>Movimiento</th><th>Detalle</th></tr></thead>
+            <tbody id="movimientosBody"><tr><td colspan="3" class="empty-hint">Cargando…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- USUARIOS -->
+      <div class="tab-panel" id="panel-usuarios">
+        <div class="card" style="padding:0;overflow-x:auto;">
+          <table class="data-table" id="usuariosTable">
+            <thead><tr><th>Nombre</th><th>Correo</th><th>Teléfono</th><th>Rol</th><th>Registrado</th><th></th></tr></thead>
+            <tbody id="usuariosBody"><tr><td colspan="6" class="empty-hint">Cargando…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CITAS -->
+      <div class="tab-panel" id="panel-citas">
+        <div class="card" style="padding:0;overflow-x:auto;">
+          <table class="data-table" id="citasTable">
+            <thead><tr><th>Cliente</th><th>Fecha</th><th>Hora</th><th>Estado</th><th></th></tr></thead>
+            <tbody id="citasBody"><tr><td colspan="5" class="empty-hint">Cargando…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- EXPEDIENTES -->
+      <div class="tab-panel" id="panel-expedientes">
+        <div class="admin-toolbar">
+          <select id="expUserSelect" onchange="onExpUserChange()">
+            <option value="">Elige un usuario…</option>
+          </select>
+        </div>
+
+        <div id="expEmpty" class="card"><p class="empty-hint">Elige un usuario registrado arriba para ver o crear su expediente.</p></div>
+
+        <div id="expArea" class="hidden">
+          <div class="card" style="margin-bottom:1.6rem;">
+            <h3 style="font-size:1.05rem;margin-bottom:1rem;">Nuevo registro de expediente</h3>
+            <div class="form-error" id="expError"></div>
+            <div class="exp-form">
+              <div class="field">
+                <label>Servicio</label>
+                <input type="text" id="expServicio" placeholder="Ej. Página web + hosting 1 año">
+              </div>
+              <div class="field">
+                <label>Precio (MXN)</label>
+                <input type="number" id="expPrecio" min="0" step="0.01" placeholder="0.00">
+              </div>
+              <div class="field">
+                <label>Estado</label>
+                <select id="expEstado">
+                  <option value="cotizado">Cotizado</option>
+                  <option value="en progreso">En progreso</option>
+                  <option value="pagado">Pagado</option>
+                  <option value="entregado">Entregado</option>
+                  <option value="cancelado">Cancelado</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label>Notas</label>
+                <textarea id="expNotas" rows="2" placeholder="Detalles, alcance, acuerdos, etc."></textarea>
+              </div>
+              <div class="full">
+                <button class="btn btn-primary btn-sm" id="expSaveBtn" onclick="crearExpediente()">Guardar expediente</button>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="font-size:1.05rem;margin-bottom:1rem;">Historial de expedientes</h3>
+          <div class="exp-list" id="expList"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo"><div class="logo-badge">SW</div><div class="logo-text"><strong>Soluciones Web Pymes y Más</strong></div></a>
+      <p>Páginas web profesionales para pequeñas empresas, veterinarias, estéticas, restaurantes y negocios locales de México.</p>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul class="flist">
+        <li><a href="https://wa.me/525633958806"><svg class="icon"><use href="#ic-wa"/></svg> +52 56 3395 8806</a></li>
+        <li><a href="mailto:hola@solucioneswebpymes.mx"><svg class="icon"><use href="#ic-mail"/></svg> hola@solucioneswebpymes.mx</a></li>
+        <li><span><svg class="icon"><use href="#ic-pin"/></svg> Ciudad de México, México</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Soluciones Web Pymes y Más. Todos los derechos reservados.</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+
+  function escapeHtml(str){
+    return String(str ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  let usuarios = [];
+  let citas = [];
+  let expedientesCache = {};
+  let expUserActual = null;
+
+  function showTab(tab){
+    document.querySelectorAll('.tab-link').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + tab));
+  }
+
+  async function cargarUsuarios(){
+    const { data, error } = await SWApp.client
+      .from('profiles')
+      .select('id,nombre,telefono,correo,role,created_at')
+      .order('created_at', { ascending: false });
+    if(error){ console.error(error); return; }
+    usuarios = data || [];
+
+    const body = document.getElementById('usuariosBody');
+    if(usuarios.length === 0){
+      body.innerHTML = '<tr><td colspan="6" class="empty-hint">Aún no hay usuarios registrados.</td></tr>';
+    } else {
+      body.innerHTML = usuarios.map(u => (
+        '<tr><td>'+escapeHtml(u.nombre||'—')+'</td><td>'+escapeHtml(u.correo||'—')+'</td><td>'+escapeHtml(u.telefono||'—')+
+        '</td><td><span class="badge badge-'+u.role+'">'+u.role+'</span></td><td>'+new Date(u.created_at).toLocaleDateString('es-MX')+
+        '</td><td><button class="btn btn-ghost btn-sm" onclick="irAExpediente(\''+u.id+'\')">Ver expediente</button></td></tr>'
+      )).join('');
+    }
+
+    const select = document.getElementById('expUserSelect');
+    select.innerHTML = '<option value="">Elige un usuario…</option>' +
+      usuarios.map(u => '<option value="'+u.id+'">'+escapeHtml(u.nombre || u.correo || u.id)+'</option>').join('');
+
+    document.getElementById('statUsuarios').textContent = usuarios.length;
+  }
+
+  function nombrePorId(id){
+    const u = usuarios.find(u => u.id === id);
+    return u ? (u.nombre || u.correo || 'Usuario') : 'Usuario';
+  }
+
+  async function cargarCitas(){
+    const { data, error } = await SWApp.client
+      .from('citas')
+      .select('id,user_id,fecha,hora,estado,created_at')
+      .order('fecha', { ascending: false })
+      .order('hora', { ascending: false });
+    if(error){ console.error(error); return; }
+    citas = data || [];
+
+    const body = document.getElementById('citasBody');
+    if(citas.length === 0){
+      body.innerHTML = '<tr><td colspan="5" class="empty-hint">Aún no hay citas agendadas.</td></tr>';
+    } else {
+      body.innerHTML = citas.map(c => (
+        '<tr><td>'+escapeHtml(nombrePorId(c.user_id))+'</td><td>'+c.fecha+'</td><td>'+c.hora.slice(0,5)+
+        '</td><td><span class="badge badge-'+c.estado+'">'+c.estado+'</span></td><td>'+citaAccionesHtml(c)+'</td></tr>'
+      )).join('');
+    }
+
+    document.getElementById('statPendientes').textContent = citas.filter(c => c.estado === 'pendiente').length;
+    document.getElementById('statConfirmadas').textContent = citas.filter(c => c.estado === 'confirmada').length;
+  }
+
+  function citaAccionesHtml(c){
+    if(c.estado === 'cancelada') return '';
+    const opciones = ['pendiente','confirmada','cancelada']
+      .map(e => '<option value="'+e+'"'+(e===c.estado?' selected':'')+'>'+e+'</option>').join('');
+    return '<select class="exp-actions" style="border:1.5px solid var(--border);border-radius:8px;padding:.35rem .5rem;font-size:.8rem;font-family:inherit;" onchange="cambiarEstadoCita(\''+c.id+'\', this.value)">'+opciones+'</select>';
+  }
+
+  async function cambiarEstadoCita(id, estado){
+    const { error } = await SWApp.client.from('citas').update({ estado }).eq('id', id);
+    if(error){ alert('No se pudo actualizar la cita: ' + error.message); }
+    await cargarCitas();
+  }
+
+  async function cargarExpedientesResumen(){
+    const { data, error } = await SWApp.client
+      .from('expedientes')
+      .select('id')
+      .neq('estado', 'cancelado');
+    if(!error) document.getElementById('statExpedientes').textContent = (data || []).length;
+  }
+
+  function construirMovimientos(){
+    const eventos = [];
+    usuarios.forEach(u => eventos.push({ fecha: u.created_at, texto: 'Nuevo registro', detalle: u.nombre || u.correo }));
+    citas.forEach(c => eventos.push({ fecha: c.created_at, texto: 'Cita agendada (' + c.estado + ')', detalle: nombrePorId(c.user_id) + ' · ' + c.fecha + ' ' + c.hora.slice(0,5) }));
+    eventos.sort((a,b) => new Date(b.fecha) - new Date(a.fecha));
+    const body = document.getElementById('movimientosBody');
+    if(eventos.length === 0){
+      body.innerHTML = '<tr><td colspan="3" class="empty-hint">Sin movimientos todavía.</td></tr>';
+      return;
+    }
+    body.innerHTML = eventos.slice(0,25).map(e => (
+      '<tr><td>'+new Date(e.fecha).toLocaleString('es-MX')+'</td><td>'+escapeHtml(e.texto)+'</td><td>'+escapeHtml(e.detalle)+'</td></tr>'
+    )).join('');
+  }
+
+  function irAExpediente(userId){
+    showTab('expedientes');
+    document.getElementById('expUserSelect').value = userId;
+    onExpUserChange();
+  }
+
+  async function onExpUserChange(){
+    const userId = document.getElementById('expUserSelect').value;
+    expUserActual = userId || null;
+    document.getElementById('expEmpty').classList.toggle('hidden', !!expUserActual);
+    document.getElementById('expArea').classList.toggle('hidden', !expUserActual);
+    document.getElementById('expError').classList.remove('show');
+    if(!expUserActual) return;
+    await cargarExpedientesDeUsuario(expUserActual);
+  }
+
+  async function cargarExpedientesDeUsuario(userId){
+    const { data, error } = await SWApp.client
+      .from('expedientes')
+      .select('*')
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false });
+    const list = document.getElementById('expList');
+    if(error){
+      list.innerHTML = '<div class="empty-hint">No se pudieron cargar los expedientes.</div>';
+      return;
+    }
+    expedientesCache[userId] = data || [];
+    if(!data || data.length === 0){
+      list.innerHTML = '<div class="empty-hint">Este usuario aún no tiene expedientes.</div>';
+      return;
+    }
+    list.innerHTML = data.map(exp => (
+      '<div class="exp-card">'+
+        '<div class="exp-card-top">'+
+          '<div><h4>'+escapeHtml(exp.servicio)+'</h4><span style="color:var(--muted);font-size:.8rem;">'+new Date(exp.created_at).toLocaleDateString('es-MX')+'</span></div>'+
+          '<div class="precio">'+(exp.precio != null ? '$'+Number(exp.precio).toLocaleString('es-MX',{minimumFractionDigits:2}) : '—')+'</div>'+
+        '</div>'+
+        (exp.notas ? '<p class="notas">'+escapeHtml(exp.notas)+'</p>' : '')+
+        '<div class="exp-actions">'+
+          '<span class="badge badge-'+exp.estado.replace(' ','-')+'">'+exp.estado+'</span>'+
+          '<select onchange="cambiarEstadoExpediente(\''+exp.id+'\', this.value, \''+userId+'\')">'+
+            ['cotizado','en progreso','pagado','entregado','cancelado'].map(e => '<option value="'+e+'"'+(e===exp.estado?' selected':'')+'>'+e+'</option>').join('')+
+          '</select>'+
+        '</div>'+
+      '</div>'
+    )).join('');
+  }
+
+  async function crearExpediente(){
+    if(!expUserActual) return;
+    const errEl = document.getElementById('expError');
+    errEl.classList.remove('show');
+    const servicio = document.getElementById('expServicio').value.trim();
+    const precioRaw = document.getElementById('expPrecio').value;
+    const estado = document.getElementById('expEstado').value;
+    const notas = document.getElementById('expNotas').value.trim();
+
+    if(!servicio){
+      errEl.textContent = 'Escribe el servicio contratado.';
+      errEl.classList.add('show');
+      return;
+    }
+
+    const btn = document.getElementById('expSaveBtn');
+    btn.disabled = true; btn.textContent = 'Guardando…';
+
+    const { error } = await SWApp.client.from('expedientes').insert({
+      user_id: expUserActual,
+      servicio,
+      precio: precioRaw ? Number(precioRaw) : null,
+      estado,
+      notas: notas || null
+    });
+
+    btn.disabled = false; btn.textContent = 'Guardar expediente';
+
+    if(error){
+      errEl.textContent = 'No se pudo guardar: ' + error.message;
+      errEl.classList.add('show');
+      return;
+    }
+
+    document.getElementById('expServicio').value = '';
+    document.getElementById('expPrecio').value = '';
+    document.getElementById('expNotas').value = '';
+    document.getElementById('expEstado').value = 'cotizado';
+    await cargarExpedientesDeUsuario(expUserActual);
+    await cargarExpedientesResumen();
+  }
+
+  async function cambiarEstadoExpediente(id, estado, userId){
+    const { error } = await SWApp.client.from('expedientes').update({ estado }).eq('id', id);
+    if(error){ alert('No se pudo actualizar: ' + error.message); return; }
+    await cargarExpedientesDeUsuario(userId);
+    await cargarExpedientesResumen();
+  }
+
+  (async function init(){
+    const perfil = await SWApp.requireAuth({ role: 'admin' });
+    if(!perfil) return;
+    document.getElementById('navUserName').textContent = perfil.nombre || perfil.correo;
+    document.getElementById('mobileUserName').textContent = 'Admin: ' + (perfil.nombre || perfil.correo);
+    document.getElementById('gate').classList.add('hidden');
+    document.getElementById('appContent').classList.remove('hidden');
+
+    await cargarUsuarios();
+    await cargarCitas();
+    await cargarExpedientesResumen();
+    construirMovimientos();
+  })();
+</script>
+</body>
+</html>
+
