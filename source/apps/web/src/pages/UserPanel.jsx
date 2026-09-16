@@ -164,11 +164,10 @@ export default function UserPanel() {
         `Adjunto en este chat mi *comprobante de pago* para apartar el día y la hora. ` +
         `Quedo atento a la confirmación. ¡Gracias!`;
 
-      window.open(waLink(msg), '_blank', 'noopener,noreferrer');
-
       setSelectedSlot(null);
       setServicio('');
       await loadMyBookings();
+      window.location.assign(waLink(msg));
     } catch (err) {
       if (err?.status === 400) {
         setError(
