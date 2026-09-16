@@ -147,7 +147,7 @@ Si necesitas cambiar:
 ## 📞 Contacto
 
 ¿Preguntas o cambios necesarios?
-- 📧 Email: cadavezqueloscerros@gmail.com
+- 💬 WhatsApp: +52 56 3395 8806
 - 💬 GitHub Issues: Abre un issue en este repo
 - 🤖 AI Assistant: Usa Claude para automatizar cambios
 
