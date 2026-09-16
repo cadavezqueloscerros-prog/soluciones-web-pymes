@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi agenda | Soluciones Web Pymes y Más</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .slot-selected-bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;background:var(--bg-soft);border:1.5px solid var(--teal);border-radius:14px;padding:1.1rem 1.4rem;margin-top:1.6rem;flex-wrap:wrap;}
+  .slot-selected-bar strong{color:var(--navy);}
+  .my-citas{margin-top:3rem;}
+  .my-citas h2{font-size:1.3rem;margin-bottom:1rem;}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="ic-wa" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.6 6.3A8.4 8.4 0 0 0 3.6 16.3L2 22l5.8-1.5A8.4 8.4 0 1 0 17.6 6.3ZM12 19.4a7 7 0 0 1-3.6-1l-.3-.2-2.7.7.7-2.6-.2-.3a7 7 0 1 1 6.1 3.4Zm3.9-5.2c-.2-.1-1.2-.6-1.4-.7-.2-.1-.3-.1-.5.1s-.6.7-.7.8-.3.2-.5.1a5.7 5.7 0 0 1-2.8-2.5c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4s-.5-1.2-.7-1.6-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a1.9 1.9 0 0 0-.6 1.4c0 .8.6 1.6.7 1.8.1.1 1.2 1.9 3 2.6 1.7.7 1.7.5 2 .4a1.7 1.7 0 0 0 1.1-.8c.1-.3.1-.5.1-.6s-.2-.1-.4-.2Z"/></symbol>
+  <symbol id="ic-mail" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><polyline points="22 6 12 13 2 6"/></symbol>
+  <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+</svg>
+
+<header id="header">
+  <nav>
+    <a href="index.html" class="logo">
+      <div class="logo-badge">SW</div>
+      <div class="logo-text"><strong>Soluciones Web</strong><span>Pymes y Más · MX</span></div>
+    </a>
+    <div class="nav-user" id="navUser">
+      <span class="hide-mobile">Hola, <strong id="navUserName">…</strong></span>
+      <button class="btn nav-ghost btn-sm" onclick="SWApp.signOut()">Cerrar sesión</button>
+    </div>
+    <button class="burger" id="burger">☰</button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <span id="mobileUserName" style="display:block;padding:1rem 24px;color:var(--muted);border-bottom:1px solid var(--border);">…</span>
+    <button onclick="SWApp.signOut()">Cerrar sesión</button>
+  </div>
+</header>
+
+<div id="gate" class="gate">
+  <div class="spinner"></div>
+  <p style="margin-top:1rem;color:var(--muted);">Verificando tu sesión…</p>
+</div>
+
+<div id="appContent" class="hidden">
+  <section class="app-hero">
+    <div class="container">
+      <span class="kicker">Mi cuenta</span>
+      <h1>Agenda tu cita</h1>
+      <p>Elige un día y horario disponible. Al confirmar, te llevamos a WhatsApp para cerrar los detalles con nosotros.</p>
+    </div>
+  </section>
+
+  <section class="app-main">
+    <div class="container">
+      <div class="card">
+        <div class="day-strip" id="dayStrip"></div>
+        <div class="slots-grid" id="slotsGrid"></div>
+        <div class="slot-selected-bar hidden" id="selectedBar">
+          <div>Horario elegido: <strong id="selectedLabel"></strong></div>
+          <div style="display:flex;gap:.6rem;">
+            <button class="btn btn-ghost btn-sm" onclick="clearSelection()">Cancelar</button>
+            <button class="btn btn-primary btn-sm" id="confirmBtn" onclick="confirmarCita()"><svg class="icon"><use href="#ic-wa"/></svg> Confirmar y enviar a WhatsApp</button>
+          </div>
+        </div>
+        <div class="form-error" id="citaError" style="margin-top:1.2rem;"></div>
+      </div>
+
+      <div class="my-citas">
+        <h2>Tus citas</h2>
+        <div class="card" style="padding:0;overflow-x:auto;">
+          <table class="data-table" id="misCitasTable">
+            <thead><tr><th>Fecha</th><th>Hora</th><th>Estado</th></tr></thead>
+            <tbody id="misCitasBody"><tr><td colspan="3" style="color:var(--muted);padding:1.2rem;">Aún no tienes citas agendadas.</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo"><div class="logo-badge">SW</div><div class="logo-text"><strong>Soluciones Web Pymes y Más</strong></div></a>
+      <p>Páginas web profesionales para pequeñas empresas, veterinarias, estéticas, restaurantes y negocios locales de México.</p>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul class="flist">
+        <li><a href="https://wa.me/525633958806"><svg class="icon"><use href="#ic-wa"/></svg> +52 56 3395 8806</a></li>
+        <li><a href="mailto:hola@solucioneswebpymes.mx"><svg class="icon"><use href="#ic-mail"/></svg> hola@solucioneswebpymes.mx</a></li>
+        <li><span><svg class="icon"><use href="#ic-pin"/></svg> Ciudad de México, México</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Soluciones Web Pymes y Más. Todos los derechos reservados.</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+
+  const NUMERO_WA = '525633958806';
+  const HORAS = ['10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00'];
+  const DOW = ['dom','lun','mar','mié','jue','vie','sáb'];
+
+  let perfil = null;
+  let dias = [];
+  let diaSeleccionado = null;
+  let ocupados = new Set();
+  let slotSeleccionado = null;
+
+  function toISO(d){ return d.toISOString().slice(0,10); }
+
+  function buildDays(){
+    const hoy = new Date();
+    hoy.setHours(0,0,0,0);
+    for(let i=0;i<14;i++){
+      const d = new Date(hoy);
+      d.setDate(d.getDate()+i);
+      dias.push(d);
+    }
+  }
+
+  function renderDayStrip(){
+    const strip = document.getElementById('dayStrip');
+    strip.innerHTML = '';
+    dias.forEach((d, i) => {
+      const pill = document.createElement('div');
+      pill.className = 'day-pill' + (i===0 ? ' active' : '');
+      pill.dataset.iso = toISO(d);
+      pill.innerHTML = '<div class="dow">'+DOW[d.getDay()]+'</div><div class="num">'+d.getDate()+'</div>';
+      pill.onclick = () => selectDay(pill.dataset.iso);
+      strip.appendChild(pill);
+    });
+    diaSeleccionado = toISO(dias[0]);
+  }
+
+  async function loadOcupados(){
+    const desde = toISO(dias[0]);
+    const hasta = toISO(dias[dias.length-1]);
+    const { data, error } = await SWApp.client.rpc('slots_ocupados', { desde, hasta });
+    ocupados = new Set();
+    if(!error && data){
+      data.forEach(row => ocupados.add(row.fecha + '_' + row.hora.slice(0,5)));
+    }
+  }
+
+  function selectDay(iso){
+    diaSeleccionado = iso;
+    clearSelection();
+    document.querySelectorAll('.day-pill').forEach(p => p.classList.toggle('active', p.dataset.iso === iso));
+    renderSlots();
+  }
+
+  function renderSlots(){
+    const grid = document.getElementById('slotsGrid');
+    grid.innerHTML = '';
+    const hoyISO = toISO(new Date());
+    const ahora = new Date();
+    HORAS.forEach(hora => {
+      const key = diaSeleccionado + '_' + hora;
+      const taken = ocupados.has(key);
+      let pasado = false;
+      if(diaSeleccionado === hoyISO){
+        const [h,m] = hora.split(':').map(Number);
+        const slotTime = new Date(); slotTime.setHours(h,m,0,0);
+        if(slotTime < ahora) pasado = true;
+      }
+      const btn = document.createElement('button');
+      btn.className = 'slot-btn' + (taken || pasado ? ' taken' : '');
+      btn.textContent = hora;
+      btn.disabled = taken || pasado;
+      btn.onclick = () => selectSlot(hora, btn);
+      grid.appendChild(btn);
+    });
+  }
+
+  function selectSlot(hora, btn){
+    document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    slotSeleccionado = hora;
+    const d = dias.find(d => toISO(d) === diaSeleccionado);
+    document.getElementById('selectedLabel').textContent = SWApp.fmtFecha(d) + ' · ' + hora;
+    document.getElementById('selectedBar').classList.remove('hidden');
+    document.getElementById('citaError').classList.remove('show');
+  }
+
+  function clearSelection(){
+    slotSeleccionado = null;
+    document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+    document.getElementById('selectedBar').classList.add('hidden');
+  }
+
+  async function confirmarCita(){
+    if(!slotSeleccionado) return;
+    const errEl = document.getElementById('citaError');
+    errEl.classList.remove('show');
+    const btn = document.getElementById('confirmBtn');
+    btn.disabled = true; btn.textContent = 'Agendando…';
+
+    const session = await SWApp.getSession();
+    const { error } = await SWApp.client.from('citas').insert({
+      user_id: session.user.id,
+      fecha: diaSeleccionado,
+      hora: slotSeleccionado,
+      estado: 'pendiente'
+    });
+
+    btn.disabled = false;
+    btn.innerHTML = '<svg class="icon"><use href="#ic-wa"/></svg> Confirmar y enviar a WhatsApp';
+
+    if(error){
+      errEl.textContent = error.code === '23505'
+        ? 'Ese horario se acaba de ocupar. Elige otro, por favor.'
+        : 'No se pudo agendar tu cita: ' + error.message;
+      errEl.classList.add('show');
+      await loadOcupados();
+      renderSlots();
+      return;
+    }
+
+    const d = dias.find(d => toISO(d) === diaSeleccionado);
+    const texto = 'Hola, quiero confirmar mi cita:\n\nNombre: ' + (perfil.nombre || '') +
+      '\nTeléfono: ' + (perfil.telefono || '') +
+      '\nFecha: ' + SWApp.fmtFecha(d) +
+      '\nHora: ' + slotSeleccionado;
+    window.location.href = SWApp.waLink(NUMERO_WA, texto);
+  }
+
+  async function loadMisCitas(){
+    const session = await SWApp.getSession();
+    const { data } = await SWApp.client
+      .from('citas')
+      .select('fecha,hora,estado')
+      .eq('user_id', session.user.id)
+      .order('fecha', { ascending: true });
+    const body = document.getElementById('misCitasBody');
+    if(!data || data.length === 0){
+      body.innerHTML = '<tr><td colspan="3" style="color:var(--muted);padding:1.2rem;">Aún no tienes citas agendadas.</td></tr>';
+      return;
+    }
+    body.innerHTML = data.map(c =>
+      '<tr><td>'+c.fecha+'</td><td>'+c.hora.slice(0,5)+'</td><td><span class="badge badge-'+c.estado+'">'+c.estado+'</span></td></tr>'
+    ).join('');
+  }
+
+  (async function init(){
+    perfil = await SWApp.requireAuth({ role: 'user' });
+    if(!perfil) return;
+    document.getElementById('navUserName').textContent = perfil.nombre || perfil.correo;
+    document.getElementById('mobileUserName').textContent = 'Hola, ' + (perfil.nombre || perfil.correo);
+    document.getElementById('gate').classList.add('hidden');
+    document.getElementById('appContent').classList.remove('hidden');
+    buildDays();
+    renderDayStrip();
+    await loadOcupados();
+    renderSlots();
+    loadMisCitas();
+  })();
+</script>
+</body>
+</html>
+
