@@ -1,285 +1,651 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
-		<meta name="generator" content="Hostinger AI Builder" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="referrer" content="strict-origin-when-cross-origin" />
-		<meta http-equiv="X-Content-Type-Options" content="nosniff" />
-		<title></title>
-		<script type="module" crossorigin src="/assets/index-B5bkowjf.js"></script>
-		<link rel="stylesheet" crossorigin href="/assets/index-BIoT9xCS.css">
-		<script type="module">
-window.onerror = (message, source, lineno, colno, errorObj) => {
-	const errorDetails = errorObj ? JSON.stringify({
-		name: errorObj.name,
-		message: errorObj.message,
-		stack: errorObj.stack,
-		source,
-		lineno,
-		colno,
-	}) : null;
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soluciones Web Pymes y Más | Páginas web profesionales en CDMX</title>
+<meta name="description" content="Creamos páginas web profesionales para que tus clientes conozcan tu negocio, confíen en él y puedan contactarte fácilmente. Diseño, WhatsApp, mapa y redes en un solo lugar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: hsl(209 61% 16%);
+    --teal: hsl(197 70% 31%);
+    --mint: hsl(173 62% 46%);
+    --ink: hsl(209 61% 16%);
+    --muted: hsl(209 28% 39%);
+    --bg-soft: hsl(204 45% 98%);
+    --border: hsl(210 24% 90%);
+    --white:#fff;
+    --radius:18px;
+    --shadow-sm:0 4px 18px rgba(9,31,41,.08);
+    --shadow-md:0 18px 40px rgba(9,31,41,.14);
+    --shadow-lg:0 30px 70px rgba(9,31,41,.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);line-height:1.65;overflow-x:hidden;}
+  h1,h2,h3,h4{font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:-.02em;}
+  img{display:block;max-width:100%;}
+  a{color:inherit;}
+  button{font-family:inherit;}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+  .icon{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.15em;}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
 
-	window.parent.postMessage({
-		type: 'horizons-runtime-error',
-		message,
-		error: errorDetails
-	}, '*');
-};
+  header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(9,31,41,.06);transition:box-shadow .3s;}
+  header.scrolled{box-shadow:0 4px 24px rgba(9,31,41,.08);}
+  nav{display:flex;align-items:center;justify-content:space-between;gap:1.2rem;padding:14px 24px;max-width:1200px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:11px;text-decoration:none;}
+  .logo-badge{flex-shrink:0;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--teal),var(--navy));display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Poppins',sans-serif;font-weight:800;font-size:1.05rem;}
+  .logo-text{line-height:1.2;}
+  .logo-text strong{display:block;font-family:'Poppins',sans-serif;font-weight:800;font-size:1.02rem;color:var(--navy);}
+  .logo-text span{display:block;font-size:.72rem;color:var(--muted);font-weight:600;letter-spacing:.03em;}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{text-decoration:none;color:var(--ink);font-weight:500;font-size:.94rem;}
+  .nav-links a:hover{color:var(--teal);}
+  .nav-cta{background:linear-gradient(135deg,var(--teal),var(--navy));color:#fff;padding:.68rem 1.4rem;border-radius:50px;text-decoration:none;font-weight:600;font-size:.88rem;box-shadow:var(--shadow-sm);transition:transform .25s;white-space:nowrap;display:inline-flex;align-items:center;gap:7px;}
+  .nav-cta:hover{transform:translateY(-2px);}
+  .burger{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--navy);}
+  .mobile-menu{display:none;flex-direction:column;gap:0;background:#fff;border-top:1px solid var(--border);}
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{padding:1rem 24px;text-decoration:none;color:var(--ink);font-weight:500;border-bottom:1px solid var(--border);}
+
+  .hero{position:relative;min-height:92vh;display:flex;align-items:center;padding:150px 0 80px;background:radial-gradient(circle at 12% 18%, rgba(23,107,135,.12), transparent 45%), radial-gradient(circle at 88% 82%, rgba(45,190,173,.14), transparent 45%), var(--bg-soft);overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(23,107,135,.2);padding:.5rem 1.1rem;border-radius:50px;font-size:.8rem;font-weight:700;color:var(--navy);margin-bottom:1.6rem;box-shadow:var(--shadow-sm);text-transform:uppercase;letter-spacing:.06em;}
+  .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--mint);}
+  .hero h1{font-size:3rem;line-height:1.15;margin-bottom:1.3rem;}
+  .hero h1 span{background:linear-gradient(135deg,var(--teal),var(--mint));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hero p{font-size:1.12rem;color:var(--muted);margin-bottom:2rem;max-width:520px;}
+  .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.3rem;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:1rem 1.9rem;border-radius:50px;font-weight:600;font-size:.96rem;text-decoration:none;border:none;cursor:pointer;transition:transform .25s, box-shadow .25s;}
+  .btn-primary{background:linear-gradient(135deg,var(--teal),var(--navy));color:#fff;box-shadow:0 16px 34px rgba(23,107,135,.3);}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(23,107,135,.4);}
+  .btn-ghost{background:#fff;color:var(--ink);border:1.5px solid rgba(9,31,41,.12);}
+  .btn-ghost:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm);}
+  .hero-note{font-size:.86rem;color:var(--muted);display:flex;align-items:center;gap:7px;}
+  .hero-note .icon{color:var(--teal);flex-shrink:0;}
+
+  .device-wrap{position:relative;}
+  .tabs{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap;}
+  .tab-btn{background:#fff;border:1.5px solid var(--border);color:var(--muted);padding:.55rem 1.15rem;border-radius:50px;font-weight:600;font-size:.87rem;cursor:pointer;transition:all .2s;}
+  .tab-btn:hover{border-color:var(--teal);color:var(--teal);}
+  .tab-btn.active{background:linear-gradient(135deg,var(--teal),var(--navy));border-color:transparent;color:#fff;}
+  .browser-card{background:#fff;border-radius:16px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid rgba(9,31,41,.08);}
+  .browser-chrome{display:flex;align-items:center;gap:10px;padding:.7rem .9rem;background:#F1F5F8;border-bottom:1px solid var(--border);}
+  .browser-dots{display:flex;gap:6px;flex-shrink:0;}
+  .browser-dots span{width:9px;height:9px;border-radius:50%;background:#D8E0E6;}
+  .browser-url{flex:1;background:#fff;border:1px solid var(--border);border-radius:7px;padding:.4rem .7rem;font-size:.72rem;color:var(--muted);display:flex;align-items:center;gap:6px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+  .browser-url .icon{width:.85em;height:.85em;flex-shrink:0;color:var(--teal);}
+  .device-frame{position:relative;height:420px;overflow:hidden;background:#fff;}
+  .device-frame iframe{position:absolute;top:0;left:0;width:1280px;height:2200px;border:none;transform:scale(.365);transform-origin:top left;pointer-events:none;display:none;background:#fff;}
+  .device-frame iframe.active{display:block;}
+  .device-frame .frame-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.85rem;background:#fff;}
+  .device-caption{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:.9rem;flex-wrap:wrap;}
+  .device-caption p{font-size:.82rem;color:var(--muted);margin:0;}
+  .device-caption a{font-size:.82rem;font-weight:700;color:var(--teal);text-decoration:none;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;}
+  .device-caption a:hover{text-decoration:underline;}
+
+  section{padding:6rem 0;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 3.5rem;}
+  .section-head.left{margin-left:0;text-align:left;}
+  .kicker{color:var(--teal);font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;margin-bottom:.7rem;display:block;}
+  .section-head h2{font-size:2.3rem;margin-bottom:1rem;}
+  .section-head p{color:var(--muted);font-size:1.05rem;}
+
+  .why{background:var(--bg-soft);}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;}
+  .why-card{background:#fff;border-radius:var(--radius);padding:2.3rem 2rem;box-shadow:var(--shadow-sm);transition:transform .3s, box-shadow .3s;}
+  .why-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);}
+  .why-num{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--teal),var(--navy));color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;font-family:'Poppins',sans-serif;font-weight:800;font-size:.95rem;}
+  .why-card h3{font-size:1.12rem;margin-bottom:.6rem;}
+  .why-card p{color:var(--muted);font-size:.92rem;}
+
+  .services-head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:3rem;flex-wrap:wrap;}
+  .services-head-row .btn{flex-shrink:0;}
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;}
+  .service-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:2rem 1.8rem;transition:transform .3s, box-shadow .3s, border-color .3s;position:relative;}
+  .service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:transparent;}
+  .service-icon{width:50px;height:50px;border-radius:13px;background:var(--bg-soft);color:var(--teal);display:flex;align-items:center;justify-content:center;margin-bottom:1.3rem;font-size:1.35rem;}
+  .service-card h3{font-size:1.12rem;margin-bottom:.65rem;}
+  .service-card p{color:var(--muted);font-size:.92rem;}
+  .service-note{margin-top:1rem;padding-top:1rem;border-top:1px dashed var(--border);}
+  .service-note b{color:var(--navy);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.3rem;}
+  .service-note p{font-size:.85rem;}
+
+  .pricing{background:var(--bg-soft);}
+  .pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;align-items:stretch;}
+  .price-card{background:#fff;border-radius:var(--radius);padding:2.2rem 1.7rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;position:relative;border:1.5px solid transparent;transition:transform .3s, box-shadow .3s;}
+  .price-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);}
+  .price-card.featured{border-color:var(--teal);box-shadow:var(--shadow-md);}
+  .price-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--teal),var(--navy));color:#fff;font-size:.68rem;font-weight:700;padding:.35rem .9rem;border-radius:50px;letter-spacing:.05em;white-space:nowrap;}
+  .price-card h3{font-size:1.15rem;margin-bottom:.5rem;}
+  .price-card .price-desc{color:var(--muted);font-size:.85rem;margin-bottom:1.2rem;min-height:2.6em;}
+  .price-amount{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.9rem;color:var(--navy);margin-bottom:.15rem;}
+  .price-terms{font-size:.72rem;color:var(--teal);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1.4rem;}
+  .price-features{list-style:none;margin-bottom:1.6rem;flex:1;}
+  .price-features li{display:flex;align-items:flex-start;gap:8px;font-size:.85rem;color:var(--ink);margin-bottom:.65rem;}
+  .price-features li .icon{color:var(--teal);flex-shrink:0;margin-top:.2em;}
+  .price-fine{font-size:.76rem;color:var(--muted);margin-bottom:1.4rem;}
+  .btn-block{display:flex;justify-content:center;width:100%;padding:.85rem 1rem;font-size:.9rem;}
+  .btn-outline{background:#fff;color:var(--teal);border:1.5px solid var(--teal);}
+  .btn-outline:hover{background:var(--teal);color:#fff;transform:translateY(-2px);}
+
+  .includes-note{text-align:center;color:var(--teal);font-weight:600;font-size:.9rem;margin-top:-2.6rem;margin-bottom:3rem;}
+  .includes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;}
+  .include-card{display:flex;gap:1rem;padding:1.6rem;border:1px solid var(--border);border-radius:14px;transition:box-shadow .3s, transform .3s;}
+  .include-card:hover{box-shadow:var(--shadow-sm);transform:translateY(-3px);}
+  .include-icon{width:42px;height:42px;border-radius:11px;background:var(--bg-soft);color:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .include-card h3{font-size:1rem;margin-bottom:.3rem;}
+  .include-card p{color:var(--muted);font-size:.86rem;}
+
+  .process{background:var(--bg-soft);}
+  .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;}
+  .process-card{background:#fff;border-radius:var(--radius);padding:2rem 1.7rem;box-shadow:var(--shadow-sm);position:relative;transition:transform .3s;}
+  .process-card:hover{transform:translateY(-5px);}
+  .process-num{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.9rem;background:linear-gradient(135deg,var(--teal),var(--mint));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.7rem;}
+  .process-card h3{font-size:1.05rem;margin-bottom:.5rem;}
+  .process-card p{color:var(--muted);font-size:.88rem;}
+
+  .faq-wrap{max-width:760px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--border);}
+  .faq-q{width:100%;background:none;border:none;text-align:left;padding:1.3rem 0;display:flex;justify-content:space-between;align-items:center;gap:1rem;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:600;font-size:1.02rem;color:var(--navy);}
+  .faq-q .icon{flex-shrink:0;color:var(--teal);transition:transform .3s;}
+  .faq-item.open .faq-q .icon{transform:rotate(180deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .faq-item.open .faq-a{max-height:280px;}
+  .faq-a p{color:var(--muted);font-size:.94rem;padding-bottom:1.3rem;max-width:640px;}
+  .faq-cta{text-align:center;margin-top:2.5rem;}
+
+  .contact{background:linear-gradient(135deg,var(--navy),var(--teal));position:relative;overflow:hidden;}
+  .contact::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 15% 20%, rgba(255,255,255,.1), transparent 45%);}
+  .contact-grid{position:relative;z-index:2;display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem;align-items:start;}
+  .contact-info h2{color:#fff;font-size:2.1rem;margin-bottom:1rem;}
+  .contact-info p{color:rgba(255,255,255,.82);font-size:1.02rem;margin-bottom:1.8rem;}
+  .contact-info .kicker{color:var(--mint);}
+  .wa-btn{background:#fff;color:var(--navy);}
+  .wa-btn:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(0,0,0,.25);}
+  .contact-phone{margin-top:1.4rem;color:rgba(255,255,255,.85);font-size:.92rem;display:flex;align-items:center;gap:8px;}
+  .contact-form{background:#fff;border-radius:var(--radius);padding:2.2rem;box-shadow:var(--shadow-lg);}
+  .contact-form h3{font-size:1.1rem;margin-bottom:.4rem;}
+  .contact-form>p{color:var(--muted);font-size:.85rem;margin-bottom:1.4rem;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+  .field{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem;}
+  .field label{font-size:.8rem;font-weight:600;color:var(--navy);}
+  .field input,.field textarea{border:1.5px solid var(--border);border-radius:10px;padding:.7rem .9rem;font-family:inherit;font-size:.92rem;color:var(--ink);resize:vertical;}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--teal);}
+  .honeypot{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+  .form-note{font-size:.76rem;color:var(--muted);margin-top:.9rem;}
+
+  footer{background:var(--navy);color:rgba(255,255,255,.75);padding:4rem 0 0;}
+  .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;}
+  .footer-brand .logo-text strong{color:#fff;}
+  .footer-brand .logo-text span{color:rgba(255,255,255,.55);}
+  .footer-brand p{margin-top:1.1rem;font-size:.88rem;color:rgba(255,255,255,.55);max-width:320px;}
+  footer h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);margin-bottom:1rem;}
+  footer .flist{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+  footer .flist a,footer .flist span{color:rgba(255,255,255,.82);text-decoration:none;font-size:.92rem;display:flex;align-items:center;gap:8px;}
+  footer .flist a:hover{color:#fff;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:1.6rem 0;text-align:center;font-size:.85rem;color:rgba(255,255,255,.4);}
+
+  .wa-float{position:fixed;bottom:22px;right:22px;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(0,0,0,.28);z-index:150;font-size:1.6rem;text-decoration:none;transition:transform .25s;}
+  .wa-float:hover{transform:scale(1.08);}
+
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:2.3rem;}
+    .why-grid,.services-grid,.includes-grid,.process-grid{grid-template-columns:1fr;}
+    .pricing-grid{grid-template-columns:repeat(2,1fr);}
+    .contact-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .nav-links{display:none;}
+    .burger{display:block;}
+    .services-head-row{align-items:flex-start;}
+    .form-row{grid-template-columns:1fr;}
+  }
+  @media (max-width:600px){
+    .pricing-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .device-frame{height:340px;}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="ic-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+  <symbol id="ic-wa" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.6 6.3A8.4 8.4 0 0 0 3.6 16.3L2 22l5.8-1.5A8.4 8.4 0 1 0 17.6 6.3ZM12 19.4a7 7 0 0 1-3.6-1l-.3-.2-2.7.7.7-2.6-.2-.3a7 7 0 1 1 6.1 3.4Zm3.9-5.2c-.2-.1-1.2-.6-1.4-.7-.2-.1-.3-.1-.5.1s-.6.7-.7.8-.3.2-.5.1a5.7 5.7 0 0 1-2.8-2.5c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4s-.5-1.2-.7-1.6-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a1.9 1.9 0 0 0-.6 1.4c0 .8.6 1.6.7 1.8.1.1 1.2 1.9 3 2.6 1.7.7 1.7.5 2 .4a1.7 1.7 0 0 0 1.1-.8c.1-.3.1-.5.1-.6s-.2-.1-.4-.2Z"/></symbol>
+  <symbol id="ic-phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="10" y1="19" x2="14" y2="19"/></symbol>
+  <symbol id="ic-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></symbol>
+  <symbol id="ic-paw" viewBox="0 0 24 24"><circle cx="7" cy="8" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="17" cy="8" r="2"/><path d="M8 15c-1.7 0-3 1.4-3 3s1.3 3 3 3c1.2 0 2-1 4-1s2.8 1 4 1c1.7 0 3-1.4 3-3s-1.3-3-3-3c-1.5 0-2-1-4-1s-2.5 1-4 1Z"/></symbol>
+  <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="ic-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 3 21 9 15 9"/></symbol>
+  <symbol id="ic-cart" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></symbol>
+  <symbol id="ic-doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></symbol>
+  <symbol id="ic-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/></symbol>
+  <symbol id="ic-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></symbol>
+  <symbol id="ic-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+  <symbol id="ic-edit" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5Z"/></symbol>
+  <symbol id="ic-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="ic-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
+  <symbol id="ic-mail" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><polyline points="22 6 12 13 2 6"/></symbol>
+  <symbol id="ic-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+</svg>
+
+<header id="header">
+  <nav>
+    <a href="#inicio" class="logo">
+      <div class="logo-badge">SW</div>
+      <div class="logo-text"><strong>Soluciones Web</strong><span>Pymes y Más · MX</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#precios">Precios</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="https://wa.me/525633958806?text=Hola%2C%20quiero%20una%20cotizaci%C3%B3n%20para%20mi%20p%C3%A1gina%20web." class="nav-cta"><svg class="icon"><use href="#ic-wa"/></svg> Solicitar cotización</a>
+    <button class="burger" id="burger">☰</button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#precios">Precios</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <span class="eyebrow"><span class="dot"></span> Páginas web para negocios locales</span>
+        <h1>Tu negocio. <span>Su mejor versión digital.</span></h1>
+        <p>Creamos páginas web profesionales para que tus clientes conozcan tu negocio, confíen en él y puedan contactarte fácilmente. Reunimos tus servicios, horarios, ubicación, redes sociales y WhatsApp en un solo lugar.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/525633958806?text=Hola%2C%20quiero%20mi%20p%C3%A1gina%20web.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F" class="btn btn-primary"><svg class="icon"><use href="#ic-wa"/></svg> Diseñemos tu página</a>
+          <a href="#precios" class="btn btn-ghost">Explorar precios</a>
+        </div>
+        <p class="hero-note"><svg class="icon"><use href="#ic-check"/></svg> Sin contratos forzosos. Tus cuentas y tu dominio siempre son tuyos.</p>
+      </div>
+
+      <div class="device-wrap reveal">
+        <div class="tabs" role="tablist">
+          <button class="tab-btn active" data-tab="veterinaria" onclick="switchTab('veterinaria')">Veterinaria</button>
+          <button class="tab-btn" data-tab="estetica" onclick="switchTab('estetica')">Estética</button>
+          <button class="tab-btn" data-tab="negocio" onclick="switchTab('negocio')">Negocio local</button>
+        </div>
+        <div class="browser-card">
+          <div class="browser-chrome">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url" id="browserUrl"><svg class="icon"><use href="#ic-lock"/></svg><span>…/portafolio-servicios/ejemplo-veterinaria.html</span></div>
+          </div>
+          <div class="device-frame">
+            <div class="frame-loading" id="frameLoading">Cargando vista previa…</div>
+            <iframe id="frame-veterinaria" class="active" data-src="https://cadavezqueloscerros-prog.github.io/portafolio-servicios/ejemplo-veterinaria.html" title="Vista previa: clínica veterinaria" tabindex="-1"></iframe>
+            <iframe id="frame-estetica" data-src="https://cadavezqueloscerros-prog.github.io/portafolio-servicios/ejemplo-estetica.html" title="Vista previa: estética / barbería" tabindex="-1"></iframe>
+            <iframe id="frame-negocio" data-src="https://cadavezqueloscerros-prog.github.io/portafolio-servicios/ejemplo-restaurante.html" title="Vista previa: negocio local" tabindex="-1"></iframe>
+          </div>
+        </div>
+        <div class="device-caption">
+          <p>Ejemplos reales de nuestro portafolio, hechos con datos de negocios de la Ciudad de México.</p>
+          <a href="https://cadavezqueloscerros-prog.github.io/portafolio-servicios/" target="_blank" rel="noopener">Ver portafolio completo <svg class="icon"><use href="#ic-arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="por-que">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Por qué con nosotros</span>
+      <h2>Una página que trabaja para ti, sin complicaciones</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-num">01</div>
+        <h3>Diseño profesional</h3>
+        <p>Una página clara y moderna que transmite confianza desde el primer vistazo y representa bien a tu negocio.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">02</div>
+        <h3>Contacto directo</h3>
+        <p>Botones de WhatsApp, mapa, horarios y redes sociales siempre visibles para que te contacten sin fricción.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">03</div>
+        <h3>Pensada para celular</h3>
+        <p>La mayoría de tus clientes te buscará desde su teléfono. Tu página se verá y funcionará perfecto ahí.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="container">
+    <div class="services-head-row reveal">
+      <div class="section-head left" style="margin-bottom:0;">
+        <span class="kicker">Servicios</span>
+        <h2>Todo lo que tu negocio necesita para estar en línea</h2>
+        <p>Nos adaptamos al tamaño y al ritmo de tu negocio. Empiezas con lo esencial y creces cuando lo necesites.</p>
+      </div>
+      <a href="https://wa.me/525633958806?text=Hola%2C%20quiero%20platicarles%20mi%20idea%20para%20mi%20p%C3%A1gina%20web." class="btn btn-outline">Platícanos tu idea</a>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon"><svg class="icon"><use href="#ic-globe"/></svg></div>
+        <h3>Sitio web informativo</h3>
+        <p>Una página clara con tus servicios, horarios, ubicación, redes sociales y botón de WhatsApp. Todo lo que tu cliente necesita para encontrarte y contactarte.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg class="icon"><use href="#ic-paw"/></svg></div>
+        <h3>Páginas para veterinarias y estéticas</h3>
+        <p>Secciones pensadas para tu giro: catálogo de servicios, perfiles del equipo, galería, preguntas frecuentes y contacto rápido para agendar.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg class="icon"><use href="#ic-pin"/></svg></div>
+        <h3>Integración de WhatsApp, mapa y redes</h3>
+        <p>Conectamos tu página con WhatsApp, Google Maps y tus redes sociales para que todo apunte a un mismo lugar: tu negocio.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg class="icon"><use href="#ic-refresh"/></svg></div>
+        <h3>Mantenimiento</h3>
+        <p>Nos encargamos de actualizaciones, respaldos y cambios de contenido para que tu página siempre esté al día y funcionando.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg class="icon"><use href="#ic-cart"/></svg></div>
+        <h3>Tiendas en línea</h3>
+        <p>Como servicio adicional, preparamos una propuesta independiente según tu catálogo y la forma en la que quieres vender.</p>
+        <div class="service-note">
+          <b>Propuesta independiente</b>
+          <p>Se cotiza aparte, ajustada a tu catálogo y forma de vender.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="precios">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Precios claros</span>
+      <h2>Sin sorpresas ni letras chiquitas</h2>
+      <p>Sabes exactamente qué pagas y qué recibes. El dominio, el correo y las plataformas externas se contratan por separado, siempre a tu nombre.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card featured reveal">
+        <span class="price-badge">El más pedido</span>
+        <h3>Sitio de contacto</h3>
+        <p class="price-desc">Ideal para negocios que quieren ser encontrados y contactados fácilmente.</p>
+        <div class="price-amount">$3,900 MXN</div>
+        <div class="price-terms">Pago único</div>
+        <ul class="price-features">
+          <li><svg class="icon"><use href="#ic-check"/></svg> Hasta 5 secciones informativas</li>
+          <li><svg class="icon"><use href="#ic-check"/></svg> Botón de WhatsApp y mapa de ubicación</li>
+          <li><svg class="icon"><use href="#ic-check"/></svg> Enlaces a tus redes sociales</li>
+          <li><svg class="icon"><use href="#ic-check"/></svg> SEO básico (títulos y descripciones)</li>
+          <li><svg class="icon"><use href="#ic-check"/></svg> Entrega típica de 2 a 3 semanas</li>
+        </ul>
+        <a href="https://wa.me/525633958806?text=Hola%2C%20quiero%20el%20Sitio%20de%20contacto%20de%20%243%2C900%20MXN." class="btn btn-primary btn-block">Quiero este sitio</a>
+      </div>
+
+      <div class="price-card reveal">
+        <h3>Tienda en línea</h3>
+        <p class="price-desc">Para vender tus productos en línea, con una propuesta ajustada a tu catálogo.</p>
+        <div class="price-amount">$5,900 MXN</div>
+        <div class="price-terms">Desde</div>
+        <ul class="price-features">
+          <li><svg class="icon"><use href="#ic-check"/></svg> Catálogo inicial de productos</li>
+          <li><svg class="icon"><use href="#ic-check"/></svg> Configuración guiada de la tienda</li>
+          <li><svg class="icon"><use href="#ic-check"/></svg> Capacitación para administrarla</li>
+          <li><svg class="icon"><use href="#ic-check"/></svg> Alcance personalizado por escrito</li>
+        </ul>
+        <p class="price-fine">Los pagos en línea, la plataforma (por ejemplo Shopify) y las aplicaciones se cotizan por separado.</p>
+        <a href="https://wa.me/525633958806?text=Hola%2C%20quiero%20cotizar%20mi%20tienda%20en%20l%C3%ADnea." class="btn btn-outline btn-block">Cotizar mi tienda</a>
+      </div>
+
+      <div class="price-card reveal">
+        <h3>Mantenimiento Cuidado</h3>
+        <p class="price-desc">Lo esencial para que tu página siga funcionando sin preocuparte.</p>
+        <div class="price-amount">$190 MXN</div>
+        <div class="price-terms">Al mes</div>
+        <ul class="price-features">
+          <li><svg class="icon"><use href="#ic-check"/></svg> Actualizaciones técnicas menores</li>
+          <li><svg class="icon"><use href="#ic-check"/></svg> Respaldo mensual de tu sitio</li>
+          <li><svg class="icon"><use href="#ic-check"/></svg> Soporte por correo</li>
+        </ul>
+        <a href="https://wa.me/525633958806?text=Hola%2C%20quiero%20el%20plan%20de%20Mantenimiento%20Cuidado." class="btn btn-outline btn-block">Elegir Cuidado</a>
+      </div>
+
+      <div class="price-card reveal">
+        <h3>Mantenimiento Activo</h3>
+        <p class="price-desc">Para negocios que actualizan su contenido con frecuencia.</p>
+        <div class="price-amount">$490 MXN</div>
+        <div class="price-terms">Al mes</div>
+        <ul class="price-features">
+          <li><svg class="icon"><use href="#ic-check"/></svg> Cambios de contenido cada mes</li>
+          <li><svg class="icon"><use href="#ic-check"/></svg> Monitoreo y respaldos frecuentes</li>
+          <li><svg class="icon"><use href="#ic-check"/></svg> Soporte prioritario por WhatsApp</li>
+        </ul>
+        <a href="https://wa.me/525633958806?text=Hola%2C%20quiero%20el%20plan%20de%20Mantenimiento%20Activo." class="btn btn-outline btn-block">Elegir Activo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="incluye">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Qué incluye</span>
+      <h2>Tu página completa, lista para recibir clientes</h2>
+      <p>Cada proyecto incluye lo necesario para que tu negocio se vea profesional y sea fácil de contactar desde el primer día.</p>
+    </div>
+    <p class="includes-note reveal">Tiempo de entrega típico: de 2 a 5 días una vez que recibimos tu contenido.</p>
+    <div class="includes-grid">
+      <div class="include-card reveal">
+        <div class="include-icon"><svg class="icon"><use href="#ic-doc"/></svg></div>
+        <div><h3>Alcance definido por escrito</h3><p>Antes de empezar acordamos secciones, contenido y tiempos. Sin sorpresas.</p></div>
+      </div>
+      <div class="include-card reveal">
+        <div class="include-icon"><svg class="icon"><use href="#ic-layout"/></svg></div>
+        <div><h3>Hasta 5 secciones</h3><p>Inicio, Servicios, Nosotros, Galería y Contacto, o las que tu negocio necesite.</p></div>
+      </div>
+      <div class="include-card reveal">
+        <div class="include-icon"><svg class="icon"><use href="#ic-image"/></svg></div>
+        <div><h3>Imágenes y textos optimizados</h3><p>Preparamos tus fotos y textos para que carguen rápido y se lean bien.</p></div>
+      </div>
+      <div class="include-card reveal">
+        <div class="include-icon"><svg class="icon"><use href="#ic-pin"/></svg></div>
+        <div><h3>Ubicación y contacto visibles</h3><p>Mapa de Google, botón de WhatsApp y enlaces a tus redes sociales.</p></div>
+      </div>
+      <div class="include-card reveal">
+        <div class="include-icon"><svg class="icon"><use href="#ic-search"/></svg></div>
+        <div><h3>SEO básico</h3><p>Títulos, descripciones y estructura correcta para que Google entienda tu página.</p></div>
+      </div>
+      <div class="include-card reveal">
+        <div class="include-icon"><svg class="icon"><use href="#ic-edit"/></svg></div>
+        <div><h3>2 rondas de ajustes incluidas</h3><p>Revisamos juntos el diseño y afinamos detalles antes de publicar.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="proceso">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Proceso</span>
+      <h2>Así de sencillo es trabajar con nosotros</h2>
+      <p>Te acompañamos en cada paso, en lenguaje claro y sin tecnicismos.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-card reveal"><div class="process-num">01</div><h3>Conversación inicial</h3><p>Platicamos por WhatsApp sobre tu negocio, tus servicios y lo que quieres lograr.</p></div>
+      <div class="process-card reveal"><div class="process-num">02</div><h3>Definición de contenido</h3><p>Reunimos textos, fotos, horarios y datos de contacto. Te guiamos si no tienes material.</p></div>
+      <div class="process-card reveal"><div class="process-num">03</div><h3>Diseño</h3><p>Creamos la propuesta visual de tu página, cuidando que se vea perfecta en celular.</p></div>
+      <div class="process-card reveal"><div class="process-num">04</div><h3>Revisión</h3><p>La revisas con calma y hacemos los ajustes incluidos en tu paquete.</p></div>
+      <div class="process-card reveal"><div class="process-num">05</div><h3>Publicación</h3><p>Ponemos tu página en línea con tu dominio y verificamos que todo funcione.</p></div>
+      <div class="process-card reveal"><div class="process-num">06</div><h3>Mantenimiento opcional</h3><p>Si lo deseas, nos encargamos de actualizaciones y cambios mes a mes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Preguntas frecuentes</span>
+      <h2>Respuestas claras, sin letras chiquitas</h2>
+      <p>¿Tienes otra duda? Escríbenos por WhatsApp y te respondemos con gusto.</p>
+    </div>
+    <div class="faq-wrap reveal">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿El dominio y el correo están incluidos en el precio? <svg class="icon"><use href="#ic-chevron"/></svg></button>
+        <div class="faq-a"><p>No. El dominio, el correo profesional y las plataformas externas se pagan por separado. Te ayudamos a contratarlos y siempre quedan registrados a tu nombre, para que tengas control total sobre ellos.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Qué necesito para vender en línea con pagos? <svg class="icon"><use href="#ic-chevron"/></svg></button>
+        <div class="faq-a"><p>Una tienda con pagos en línea requiere una plataforma (por ejemplo Shopify), pasarelas de pago y posiblemente aplicaciones adicionales, que se pagan por separado. Por eso la tienda con pagos se maneja con una cotización independiente, ajustada a tu catálogo y a la forma en la que quieres vender.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Cuánto tiempo tarda mi página? <svg class="icon"><use href="#ic-chevron"/></svg></button>
+        <div class="faq-a"><p>El tiempo de entrega típico es de 2 a 3 semanas una vez que recibimos tu contenido (textos, fotos y datos de contacto). Si necesitas ayuda para preparar tu material, te guiamos en el proceso.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Puedo pedir cambios después de la entrega? <svg class="icon"><use href="#ic-chevron"/></svg></button>
+        <div class="faq-a"><p>Tu proyecto incluye 2 rondas de ajustes antes de publicar. Después, puedes contratar uno de los planes de mantenimiento para cambios de contenido, actualizaciones y soporte continuo.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Garantizan ventas o aparecer primero en Google? <svg class="icon"><use href="#ic-chevron"/></svg></button>
+        <div class="faq-a"><p>No prometemos ventas ni posicionamientos garantizados: ningún proveedor serio puede hacerlo. Lo que sí hacemos es una página profesional, rápida y con SEO básico bien implementado, para que tus clientes te encuentren y te contacten fácilmente.</p></div>
+      </div>
+    </div>
+    <div class="faq-cta reveal">
+      <a href="https://wa.me/525633958806?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20sus%20servicios." class="btn btn-outline">Hacer una pregunta</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <span class="kicker">Contacto</span>
+        <h2>Haz que tus clientes te encuentren.</h2>
+        <p>Cuéntanos sobre tu negocio y te respondemos con una propuesta clara, sin compromiso. Normalmente contestamos el mismo día.</p>
+        <a href="https://wa.me/525633958806?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios." class="btn btn-primary wa-btn"><svg class="icon"><use href="#ic-wa"/></svg> Escribir por WhatsApp</a>
+        <p class="contact-phone"><svg class="icon"><use href="#ic-phone"/></svg> +52 56 3395 8806 · Ciudad de México</p>
+      </div>
+
+      <div class="contact-form reveal">
+        <h3>Cuéntanos de tu proyecto</h3>
+        <p>Al enviar, se abrirá WhatsApp con tu mensaje listo.</p>
+        <form id="contactForm">
+          <div class="honeypot"><label for="website">No rellenar este campo</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
+          <div class="form-row">
+            <div class="field"><label for="cf-name">Tu nombre</label><input type="text" id="cf-name" required></div>
+            <div class="field"><label for="cf-phone">Teléfono</label><input type="tel" id="cf-phone"></div>
+          </div>
+          <div class="field"><label for="cf-email">Correo electrónico</label><input type="email" id="cf-email"></div>
+          <div class="field"><label for="cf-msg">Mensaje</label><textarea id="cf-msg" rows="4" required></textarea></div>
+          <button type="submit" class="btn btn-primary btn-block"><svg class="icon"><use href="#ic-wa"/></svg> Enviar por WhatsApp</button>
+          <p class="form-note">Al enviar se abre WhatsApp con tu mensaje. Tus datos se usan solo para responder tu solicitud, conforme a nuestro Aviso de privacidad.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="#inicio" class="logo"><div class="logo-badge">SW</div><div class="logo-text"><strong>Soluciones Web Pymes y Más</strong></div></a>
+      <p>Páginas web profesionales para pequeñas empresas, veterinarias, estéticas, restaurantes y negocios locales de México.</p>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul class="flist">
+        <li><a href="https://wa.me/525633958806?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios."><svg class="icon"><use href="#ic-wa"/></svg> +52 56 3395 8806</a></li>
+        <li><a href="mailto:hola@solucioneswebpymes.mx"><svg class="icon"><use href="#ic-mail"/></svg> hola@solucioneswebpymes.mx</a></li>
+        <li><span><svg class="icon"><use href="#ic-pin"/></svg> Ciudad de México, México</span></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <ul class="flist">
+        <li><span>Aviso de privacidad</span></li>
+        <li><span>Términos y condiciones</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Soluciones Web Pymes y Más. Todos los derechos reservados. · Hecho con dedicación en la Ciudad de México.</div>
+</footer>
+
+<a href="https://wa.me/525633958806?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios." class="wa-float" aria-label="Escribir por WhatsApp" target="_blank" rel="noopener"><svg class="icon" style="width:1.7rem;height:1.7rem"><use href="#ic-wa"/></svg></a>
+
+<script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 20));
+
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  const io = new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  function toggleFaq(btn){
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if(!wasOpen) item.classList.add('open');
+  }
+
+  const tabUrls = {
+    veterinaria: '…/portafolio-servicios/ejemplo-veterinaria.html',
+    estetica: '…/portafolio-servicios/ejemplo-estetica.html',
+    negocio: '…/portafolio-servicios/ejemplo-restaurante.html'
+  };
+  const loadedFrames = {};
+  function switchTab(tab){
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+    document.querySelectorAll('.device-frame iframe').forEach(f => f.classList.remove('active'));
+    const frame = document.getElementById('frame-' + tab);
+    if(!loadedFrames[tab]){
+      frame.src = frame.dataset.src;
+      loadedFrames[tab] = true;
+    }
+    frame.classList.add('active');
+    document.getElementById('browserUrl').querySelector('span').textContent = tabUrls[tab];
+    document.getElementById('frameLoading').style.display = 'none';
+  }
+  const heroFrameObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        switchTab('veterinaria');
+        heroFrameObserver.disconnect();
+      }
+    });
+  },{threshold:.2});
+  heroFrameObserver.observe(document.querySelector('.device-frame'));
+
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    if(document.getElementById('website').value){ return; }
+    const name = document.getElementById('cf-name').value.trim();
+    const phone = document.getElementById('cf-phone').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const msg = document.getElementById('cf-msg').value.trim();
+    let text = 'Hola, quiero más información sobre sus servicios.\n\nNombre: ' + name;
+    if(phone) text += '\nTeléfono: ' + phone;
+    if(email) text += '\nCorreo: ' + email;
+    text += '\nMensaje: ' + msg;
+    window.open('https://wa.me/525633958806?text=' + encodeURIComponent(text), '_blank');
+  });
 </script>
-		<script type="module">
-const observer = new MutationObserver((mutations) => {
-	for (const mutation of mutations) {
-		for (const addedNode of mutation.addedNodes) {
-			if (
-				addedNode.nodeType === Node.ELEMENT_NODE &&
-				(
-					addedNode.tagName?.toLowerCase() === 'vite-error-overlay' ||
-					addedNode.classList?.contains('backdrop')
-				)
-			) {
-				handleViteOverlay(addedNode);
-			}
-		}
-	}
-});
-
-observer.observe(document.documentElement, {
-	childList: true,
-	subtree: true
-});
-
-function handleViteOverlay(node) {
-	if (!node.shadowRoot) {
-		return;
-	}
-
-	const backdrop = node.shadowRoot.querySelector('.backdrop');
-
-	if (backdrop) {
-		const overlayHtml = backdrop.outerHTML;
-		const parser = new DOMParser();
-		const doc = parser.parseFromString(overlayHtml, 'text/html');
-		const messageBodyElement = doc.querySelector('.message-body');
-		const fileElement = doc.querySelector('.file');
-		const messageText = messageBodyElement ? messageBodyElement.textContent.trim() : '';
-		const fileText = fileElement ? fileElement.textContent.trim() : '';
-		const error = messageText + (fileText ? ' File:' + fileText : '');
-
-		window.parent.postMessage({
-			type: 'horizons-vite-error',
-			error,
-		}, '*');
-	}
-}
-</script>
-		<script type="module">
-const originalConsoleError = console.error;
-const MATCH_LINE_COL_REGEX = /:(\d+):(\d+)\)?\s*$/; // regex to match the :lineNum:colNum
-const MATCH_AT_REGEX = /^\s*at\s+(?:async\s+)?(?:.*?\s+)?\(?/; // regex to remove the 'at' keyword and any 'async' or function name
-const MATCH_PATH_REGEX = /^\//; // regex to remove the leading slash
-
-function parseStackFrameLine(line) {
-	const lineColMatch = line.match(MATCH_LINE_COL_REGEX);
-	if (!lineColMatch) return null;
-	const [, lineNum, colNum] = lineColMatch;
-	const suffix = `:${lineNum}:${colNum}`;
-	const idx = line.lastIndexOf(suffix);
-	if (idx === -1) return null;
-	const before = line.substring(0, idx);
-	const path = before.replace(MATCH_AT_REGEX, '').trim();
-	
-	if (!path) return null;
-
-	try {
-		const pathname = new URL(path).pathname;
-		const filePath = pathname.replace(MATCH_PATH_REGEX, '') || pathname;
-		return `${filePath}:${lineNum}:${colNum}`;
-	} catch (e) {
-		const filePath = path.replace(MATCH_PATH_REGEX, '') || path;
-		return `${filePath}:${lineNum}:${colNum}`;
-	}
-}
-
-function getFilePathFromStack(stack, skipFrames = 0) {
-	if (!stack || typeof stack !== 'string') return null;
-	const lines = stack.split('\n').slice(1);
-
-	const frames = lines.map(line => parseStackFrameLine(line.replace(/\r$/, ''))).filter(Boolean);
-
-	return frames[skipFrames] ?? null;
-}
-
-function formatConsoleMessage(args, skipStackFrames = 1) {
-	let messageString = '';
-	let filePath = null;
-
-	for (let i = 0; i < args.length; i++) {
-		const arg = args[i];
-		if (arg instanceof Error) {
-			filePath = getFilePathFromStack(arg.stack, 0);
-			messageString = `${arg.name}: ${arg.message}`;
-			if (filePath) {
-				messageString = `${messageString} at ${filePath}`;
-			}
-			break;
-		}
-	}
-
-	if (!messageString) {
-		messageString = args.map(arg => typeof arg === 'object' ? JSON.stringify(arg) : String(arg)).join(' ');
-		const stack = new Error().stack;
-		filePath = getFilePathFromStack(stack, skipStackFrames);
-		if (filePath) {
-			messageString = `${messageString} at ${filePath}`;
-		}
-	}
-
-	return messageString;
-}
-
-console.error = function(...args) {
-	originalConsoleError.apply(console, args);
-
-	window.parent.postMessage({
-		type: 'horizons-console-error',
-		error: formatConsoleMessage(args, 1)
-	}, '*');
-};
-
-const originalConsoleWarn = console.warn;
-
-console.warn = function(...args) {
-	originalConsoleWarn.apply(console, args);
-
-	window.parent.postMessage({
-		type: 'horizons-console-warn',
-		warning: formatConsoleMessage(args, 1)
-	}, '*');
-};
-</script>
-		<script type="module">
-// Prevents authentication failures (PB returns 400) from crashing the app — use console.info, not console.error/PM2.
-// [urlPattern, bodyPattern] tuples; align with sandboxErrorUtils ERROR_BLACKLIST.
-const BENIGN_FETCH_ERRORS = [
-	[/hcgi\/platform\/api\/collections\/.*auth-with-password.*/i, /Failed to authenticate/i],
-	[/hcgi\/api\//i, /Insufficient credits/i],
-	// A user-supplied integration secret (Stripe/PayPal/Twilio/...) is not set yet — an expected setup state, not a bug to fix.
-	[/hcgi\/api\//i, /INTEGRATION_NOT_CONFIGURED/i],
-];
-
-function isBenignFetchError(url, body) {
-	return BENIGN_FETCH_ERRORS.some(([urlPattern, bodyPattern]) =>
-		urlPattern.test(url) && (!bodyPattern || bodyPattern.test(body)));
-}
-
-const PLATFORM_URL_PATTERN = /hcgi\/platform\//i;
-const VALIDATION_CODE_TEXT_PATTERN = /validation_/;
-
-function hasValidationCode(value) {
-	if (value == null) {
-		return false;
-	}
-	if (typeof value === 'string') {
-		return value.startsWith('validation_');
-	}
-	if (Array.isArray(value)) {
-		return value.some(hasValidationCode);
-	}
-	if (typeof value === 'object') {
-		return Object.values(value).some(hasValidationCode);
-	}
-	return false;
-}
-
-function isValidationFetchWarning(url, body) {
-	if (!PLATFORM_URL_PATTERN.test(url)) {
-		return false;
-	}
-	try {
-		return hasValidationCode(JSON.parse(body));
-	} catch {
-		return VALIDATION_CODE_TEXT_PATTERN.test(body);
-	}
-}
-
-const originalFetch = window.fetch;
-
-window.fetch = function(...args) {
-	const url = args[0] instanceof Request ? args[0].url : args[0];
-
-	// Skip WebSocket URLs
-	if (url.startsWith('ws:') || url.startsWith('wss:')) {
-		return originalFetch.apply(this, args);
-	}
-
-	return originalFetch.apply(this, args)
-		.then(async response => {
-			const contentType = response.headers.get('Content-Type') || '';
-
-			// Exclude HTML document responses
-			const isDocumentResponse =
-				contentType.includes('text/html') ||
-				contentType.includes('application/xhtml+xml');
-
-			if (!response.ok && !isDocumentResponse) {
-					const responseClone = response.clone();
-					const errorFromRes = await responseClone.text();
-					const requestUrl = response.url;
-					const errorMessage = `Fetch error from ${requestUrl}: ${errorFromRes}`;
-
-					if (isBenignFetchError(requestUrl, errorFromRes)) {
-						console.info(errorMessage);
-					} else if (isValidationFetchWarning(requestUrl, errorFromRes)) {
-						console.warn(errorMessage);
-					} else {
-						console.error(errorMessage);
-					}
-			}
-
-			return response;
-		})
-		.catch(error => {
-			if (!url.match(/.html?$/i)) {
-				// Cancelled in-flight fetch (e.g. preview reload) — not a server failure.
-				if (error?.name === 'AbortError') {
-					console.info(error);
-				} else {
-					console.error(error);
-				}
-			}
-
-			throw error;
-		});
-};
-</script>
-		<script type="module">
-if (window.navigation && window.self !== window.top) {
-	window.navigation.addEventListener('navigate', (event) => {
-		const url = event.destination.url;
-
-		try {
-			const destinationUrl = new URL(url);
-			const destinationOrigin = destinationUrl.origin;
-			const currentOrigin = window.location.origin;
-
-			if (destinationOrigin === currentOrigin) {
-				return;
-			}
-		} catch (error) {
-			return;
-		}
-
-		window.parent.postMessage({
-			type: 'horizons-navigation-error',
-			url,
-		}, '*');
-	});
-}
-</script>
-	</head>
-	<body>
-		<div id="root"></div>
-	</body>
+</body>
 </html>
