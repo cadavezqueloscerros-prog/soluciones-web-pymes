@@ -84,6 +84,8 @@
   .device-frame{position:relative;height:420px;overflow:hidden;background:#fff;}
   .device-frame iframe{position:absolute;top:0;left:0;width:1280px;height:2200px;border:none;transform:scale(.365);transform-origin:top left;pointer-events:none;display:none;background:#fff;}
   .device-frame iframe.active{display:block;}
+  .device-frame .frame-link{position:absolute;inset:0;z-index:5;cursor:pointer;background:transparent;}
+.device-frame .frame-link::after{content:"Ver página completa ↗";position:absolute;bottom:14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--teal),var(--navy));color:#fff;padding:.6rem 1.3rem;border-radius:50px;font-family:'Poppins',sans-serif;font-weight:600;font-size:.85rem;box-shadow:0 10px 24px rgba(9,31,41,.28);white-space:nowrap;pointer-events:none;}
   .device-frame .frame-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.85rem;background:#fff;}
   .device-caption{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:.9rem;flex-wrap:wrap;}
   .device-caption p{font-size:.82rem;color:var(--muted);margin:0;}
@@ -350,15 +352,21 @@
           <div class="browser-chrome">
             <div class="browser-dots"><span></span><span></span><span></span></div>
           </div>
-          <div class="device-frame">
-            <div class="frame-loading" id="frameLoading">Cargando vista previa…</div>
+        <div class="device-frame">
+  <a class="frame-link" href="https://cadavezqueloscerros-prog.github.io/portafolio-servicios/" target="_blank" rel="noopener" aria-label="Abrir el portafolio completo"></a>
+  <div class="frame-loading" id="frameLoading">Cargando vista previa…</div>
             <iframe id="frame-veterinaria" class="active" data-src="https://cadavezqueloscerros-prog.github.io/portafolio-servicios/ejemplo-veterinaria.html" title="Vista previa: clínica veterinaria" tabindex="-1"></iframe>
             <iframe id="frame-estetica" data-src="https://cadavezqueloscerros-prog.github.io/portafolio-servicios/ejemplo-estetica.html" title="Vista previa: estética / barbería" tabindex="-1"></iframe>
             <iframe id="frame-negocio" data-src="https://cadavezqueloscerros-prog.github.io/portafolio-servicios/ejemplo-restaurante.html" title="Vista previa: negocio local" tabindex="-1"></iframe>
           </div>
         </div>
-        <div class="device-caption">
-          <p>Ejemplos reales de nuestro portafolio, hechos con datos de negocios de la Ciudad de México.</p>
+       <div class="device-caption">
+  <p>Ejemplos reales de nuestro portafolio, hechos con datos de negocios de la Ciudad de México.</p>
+  <a href="https://cadavezqueloscerros-prog.github.io/portafolio-servicios/" target="_blank" rel="noopener">
+    Ver portafolio completo
+    <svg class="icon"><use href="#ic-arrow"/></svg>
+  </a>
+</div>
         </div>
       </div>
     </div>
